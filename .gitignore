@@ -1,0 +1,20 @@
+#angular
+/backend/dist/
+/backend/bazel-out
+/backend/integration/bazel/bazel-*
+*.log
+/backend/node_modules/
+
+# npm
+node_modules
+package-lock.json
+npm-shrinkwrap.json
+*.log
+*.gz
+
+# Coveralls
+.nyc_output
+coverage
+
+# Benchmarking
+benchmarks/graphs
