@@ -3,9 +3,9 @@ This is the code for my personal resume website. It is an example of what can be
 
 It is also a demonstration of how I handle website development over time.  Github will be used so that previous versions of my entire project can be seen as needed. Anyone will be able to go through the commit history and see everything develop step by step if they wish.
 
-# Minimum Viable Product
+## Minimum Viable Product
 For this project to meet the criteria of a minimum viable product the following must be true:
-## The website must be fully reactive. 
+### The website must be fully reactive. 
 The user experience of the website must be pleasent both on mobile and on computers. People hiring and looking for candidates will likely be doing so from personal computer. Meanwhile most people have a mobile phone in thier possesion and the vast majority of modern phones are capable of accessing the web from anywhere. 
 
 This means that a modern website must support all screen sizes from small phone screens to ultra wide monitors.
