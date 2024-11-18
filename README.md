@@ -36,7 +36,7 @@ These are the goals once the basics are met. The higher in the list the higher t
 - Additional pages to display any other products or websites I make in the future. Eventually the goal is to turn my resume website into a personal portfolio that can be accessed anywhere.
 
 ## Hosting
-There will be seperate documents in the future that will go over how to setup and host a development environment that will be linked here. 
+A [deploy](Deploy.md) document has been created to help people setup and run the website locally for development.
 
 ## Main Software Used
 The core of this website will be HTML, Javascript and CSS. However to make it feasable to develop in a reasonable time span and to host the backend additional software will be used.
