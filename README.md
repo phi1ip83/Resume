@@ -63,5 +63,6 @@ LibreWolf and the Brave Browser were the primary web browsers used to test the w
 
 Brave was used instead of google chrome because it functions in the same manner while having additional restrictions on the content within. many other popular web browsers like microsoft Edge are also based off of google chrome and function identically. Over 65% of all web browsers used are either google chrome or based on it world wide.
 
-LibreWolf was used instead of FireFox because it is very privacy based and block a large amount of javascript and web tools like WebGL. Anyone who has modified thier web browsers because they want privacy will likely block similiar things, this way I can ensure even those individuals can access my website. Firefox is the only web browser other then chrome that is commonly used as a base. This lets me cover a slightly wider range of web browsers as well.
-    
+LibreWolf was used instead of FireFox because it is very privacy based and blocks a large amount of javascript and web tools like WebGL. Anyone who has modified thier web browsers because they want privacy will likely block similiar things, this way I can ensure even those individuals can access my website. Firefox is the only web browser other then chrome that is commonly used as a base. This lets me cover a slightly wider range of web browsers as well. 
+
+The one weakness is the lack of support for safari. Safari is a browser made for apple products and will have to be throughly tested once development nears completion. Any future work will also have to be tested in case of issues.
