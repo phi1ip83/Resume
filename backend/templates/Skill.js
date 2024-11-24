@@ -1,13 +1,9 @@
 const {Model, DataTypes} = require('sequelize')
-const sequelize = require('./database')
+const sequelize = require('../database')
 
-class Experience extends Model{}
-Experience.init({
+class Skill extends Model{}
+Skill.init({
     name:{
-        type: DataTypes.STRING,
-        allowNull:false
-    },
-    date:{
         type: DataTypes.STRING,
         allowNull:false
     },
@@ -23,6 +19,6 @@ Experience.init({
 
 },{
     sequelize,
-    modelName:'experience'
+    modelName:'skill'
 })
-module.exports = Experience;
+module.exports = Skill;
