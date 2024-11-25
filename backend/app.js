@@ -6,6 +6,7 @@ const sequelize = require('./database');
 const Experience=require("./templates/Experience");
 const Skill = require("./templates/Skill");
 const Education = require("./templates/Education")
+//initialize database and wipe any previous information out
 sequelize.sync({force:true}).then(()=>console.log("db ready"));
 
 
