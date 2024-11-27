@@ -126,6 +126,7 @@ const education = await Education.findOne({where:{id:requestedId}});
 
 res.send(education);
 });
+
 //update education by id
 app.put('/api/education/:id', async (req,res)=>{
 const requestedId = req.params.id;

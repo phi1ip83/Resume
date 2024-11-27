@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Experience } from '../dataTypes/Experience';
 
 @Component({
   selector: 'app-experience',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './experience.component.css'
 })
 export class ExperienceComponent {
-
+  @Input() item!:Experience;
 }

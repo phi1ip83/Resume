@@ -26,6 +26,7 @@ export class DatabaseService {
    
   }
   getExperience(id:number):Observable<Experience>{
+  
     const currentUrl = `${this.url}/experience/${id}`
     return this.http.get<Experience>(currentUrl);
   }
