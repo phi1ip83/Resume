@@ -7,6 +7,7 @@ const Experience=require("./templates/Experience");
 const Skill = require("./templates/Skill");
 const Education = require("./templates/Education")
 //initialize database and wipe any previous information out
+//remove force:true to keep information on reset
 sequelize.sync({force:true}).then(()=>console.log("db ready"));
 
 
@@ -27,7 +28,10 @@ app.get('/api', (req, res) => {
 //experience
 //create a new job experience based on the body recieved from the call
 app.post('/api/experience', (req,res)=>{
-    Experience.create(req.body).then(res.send('experience inserted.'))
+    Experience.create(req.body).then(res.send({message: "Successfully Registered", status: 201})).catch(err=>{
+      console.log(err);
+      res.send({message:"database refused.", status: 400})
+    });
 
 });
 //get all experiences from the database
@@ -46,14 +50,27 @@ app.get('/api/experience/:id', async (req, res)=>{
 //update experience by id
 app.put('/api/experience/:id', async (req,res)=>{
   const requestedId = req.params.id;
-  Experience.update(req.body, {where:{id:requestedId}}).then(temp => res.send(temp))
+  Experience.update(req.body, {where:{id:requestedId}}).then(temp => res.send(temp)).catch(err=>{
+    console.log(err);
+    res.send({message:"database refused.", status: 400})
+  });
 
-
+});
+//delete by id
+app.delete('/api/experience/:id', async (req,res)=>{
+  const requestedId = req.params.id;
+  Experience.destroy({where:{id:requestedId}}).then(res.send({message:"deleted.", status:201})).catch(err=>{
+    console.log(err);
+    res.send({message:"database refused.", status: 400})
+  });
 });
 //skill
 //create a new skill based on the body recieved from the call
 app.post('/api/skill', (req,res)=>{
-  Skill.create(req.body).then(res.send('skill inserted.'))
+  Skill.create(req.body).then(res.send({message: "Successfully Registered", status: 201})).catch(err=>{
+    console.log(err);
+    res.send({message:"database refused.", status: 400})
+  });
 
 });
 //get all skills from the database
@@ -72,14 +89,28 @@ res.send(skill);
 //update skill by id
 app.put('/api/skill/:id', async (req,res)=>{
 const requestedId = req.params.id;
-Skill.update(req.body, {where:{id:requestedId}}).then(temp => res.send(temp))
+Skill.update(req.body, {where:{id:requestedId}}).then(temp => res.send(temp)).catch(err=>{
+  console.log(err);
+  res.send({message:"database refused.", status: 400})
+});
+//delete by id
+app.delete('/api/skill/:id', async (req,res)=>{
+  const requestedId = req.params.id;
+  Skill.destroy({where:{id:requestedId}}).then(res.send({message:"deleted.", status:201})).catch(err=>{
+    console.log(err);
+    res.send({message:"database refused.", status: 400})
+  });
+});
 
 
 });
 //education
 //create a new education based on the body recieved from the call
 app.post('/api/education', (req,res)=>{
-  Education.create(req.body).then(res.send('education inserted.'))
+  Education.create(req.body).then(res.send({message: "Successfully Registered", status: 201})).catch(err=>{
+    console.log(err);
+    res.send({message:"database refused.", status: 400})
+  });
 
 });
 //get all education from the database
@@ -98,7 +129,19 @@ res.send(education);
 //update education by id
 app.put('/api/education/:id', async (req,res)=>{
 const requestedId = req.params.id;
-Education.update(req.body, {where:{id:requestedId}}).then(temp => res.send(temp))
+Education.update(req.body, {where:{id:requestedId}}).then(temp => res.send(temp)).catch(err=>{
+  console.log(err);
+  res.send({message:"database refused.", status: 400})
+});
+//delete by id
+app.delete('/api/education/:id', async (req,res)=>{
+  const requestedId = req.params.id;
+  Education.destroy({where:{id:requestedId}}).then(res.send({message:"deleted.", status:201})).catch(err=>{
+    console.log(err);
+    res.send({message:"database refused.", status: 400})
+  });
+});
+
 
 
 });
