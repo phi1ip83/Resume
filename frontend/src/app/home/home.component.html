@@ -2,10 +2,14 @@
     <label for="type">Job Type: &nbsp;&nbsp;</label>
     <select id="type" aria-label="job type" [(ngModel)]="type">
         <option value="web_dev">Web Developer</option>
-        <option value="service">Customer Service</option>
     </select>
 </div>
 
 <div class="container text-center">
-    
+    <h2>Experience</h2>
+    <app-experience *ngFor="let experience of visableExperiences" [item]="experience"></app-experience>
+    <h2>Skills</h2>
+    <app-skills *ngFor="let skill of visableSkills" [item]="skill"></app-skills>
+    <h2>Education</h2>
+    <app-education *ngFor="let education of educations" [item]="education"></app-education>
 </div>

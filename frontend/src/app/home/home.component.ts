@@ -7,11 +7,13 @@ import { Experience } from '../dataTypes/Experience';
 import { Skill } from '../dataTypes/Skill';
 import { Education } from '../dataTypes/Education';
 import { FormControl, FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ExperienceComponent, SkillsComponent, EducationComponent, FormsModule],
+  imports: [ExperienceComponent, SkillsComponent, EducationComponent, FormsModule, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
