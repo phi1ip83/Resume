@@ -33,7 +33,7 @@ app.get('/api', (req, res) => {
 
 //------------------security-------------------------------
 //register
-app.post("/register", async (req, res)=>{
+app.post("/api/register", async (req, res)=>{
   try{
     const { name, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -47,7 +47,7 @@ app.post("/register", async (req, res)=>{
 
 });
 //login
-app.post("/login", async (req, res)=>{
+app.post("/api/login", async (req, res)=>{
   try {
     const { name, password } = req.body;
     const user = await Account.findByPk(name)
@@ -72,7 +72,7 @@ app.post("/login", async (req, res)=>{
 
 });
 //test permissions
-app.get("/auth", verifyToken, (req,res)=>{
+app.get("/api/auth", verifyToken, (req,res)=>{
   res.send({status:201, message:`${req.name} has accesed a secure route.`});
 });
 
