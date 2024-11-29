@@ -2,7 +2,9 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
+const cors = require('cors');
 
+//initiate database
 const sequelize = require('./database');
 //database templates
 const Experience=require("./templates/Experience");
@@ -21,6 +23,9 @@ const verifyToken = require('./auth')
 
 //lets you read json objects from requests
 app.use(express.json());
+
+//cors enabling, lets cross orign request for the api
+app.use(cors());
 
 //test request to make sure the website is running
 app.get('/', (req, res) => {
