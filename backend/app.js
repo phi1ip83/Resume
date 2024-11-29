@@ -46,6 +46,7 @@ app.post("/register", async (req, res)=>{
   }
 
 });
+//login
 app.post("/login", async (req, res)=>{
   try {
     const { name, password } = req.body;
@@ -70,6 +71,7 @@ app.post("/login", async (req, res)=>{
   }
 
 });
+//test permissions
 app.get("/auth", verifyToken, (req,res)=>{
   res.send({status:201, message:`${req.name} has accesed a secure route.`});
 });
