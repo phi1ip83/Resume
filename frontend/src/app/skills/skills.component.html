@@ -1,5 +1,6 @@
 <div class="border" >
     <h3>{{this.item.name}}</h3>
+    <a class="btn btn-warning" *ngIf="user" [routerLink]="['/skill', item.id]">Edit</a>
     <ul class="list-group">
         <li class="list-group-item" *ngFor="let point of this.item.points">{{point}}</li>
     </ul>

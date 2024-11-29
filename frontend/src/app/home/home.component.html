@@ -7,11 +7,11 @@
 
 <div class="container text-center">
     <h2>Experience</h2><a class="btn btn-primary" *ngIf="name" routerLink="/experience/-1">Add New</a>
-    <app-experience *ngFor="let experience of visableExperiences" [item]="experience"></app-experience>
+    <app-experience *ngFor="let experience of visableExperiences" [item]="experience" [user]="name"></app-experience>
 
     <h2>Skills</h2><a class="btn btn-primary" *ngIf="name" routerLink="/skill/-1">Add New</a>
-    <app-skills *ngFor="let skill of visableSkills" [item]="skill"></app-skills>
+    <app-skills *ngFor="let skill of visableSkills" [item]="skill" [user]="name"></app-skills>
 
     <h2>Education</h2><a class="btn btn-primary" routerLink="/education/-1" *ngIf="name">Add New</a>
-    <app-education *ngFor="let education of educations" [item]="education"></app-education>
+    <app-education *ngFor="let education of educations" [item]="education" [user]="name"></app-education>
 </div>
