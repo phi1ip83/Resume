@@ -48,8 +48,30 @@ export class LoginService {
   logout(){
     this.name = undefined;
     localStorage.removeItem('token');
+    window.location.reload();
   }
-  
+  testAuth(){
+    const headers = this.getHeaders();
+
+    this.http.get(this.url+'/auth', {headers}).subscribe(temp =>{
+      console.log(temp);
+      
+    });
+  }
+  getHeaders():HttpHeaders{
+    this.updateUser();
+    let temp=localStorage.getItem('token');
+
+    if(temp){
+      return new HttpHeaders({ 'Content-Type': 'application/json', Authorization:temp });
+
+    }else{
+    return new HttpHeaders({ 'Content-Type': 'application/json'});
+
+    }
+
+
+  }
   login(user:User):Observable<any>{
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post<JSON>(this.url+'/login', user, {headers})

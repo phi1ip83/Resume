@@ -9,16 +9,19 @@ import { Education } from '../dataTypes/Education';
 import { FormControl, FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { LoginService } from '../login.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ExperienceComponent, SkillsComponent, EducationComponent, FormsModule, CommonModule],
+  imports: [ExperienceComponent, SkillsComponent, EducationComponent, FormsModule, CommonModule, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
   type:string = "web_dev";
+  name?:string;
 
   skills:Skill[]=[];
   visableSkills:Skill[]=[];
@@ -28,9 +31,14 @@ export class HomeComponent {
   experiences:Experience[]=[];
   visableExperiences:Experience[]=[]
 
-  constructor(private database:DatabaseService){}
+  constructor(private database:DatabaseService, private login:LoginService){}
 
   ngOnInit(){
+    this.login.getName().subscribe(temp=>{
+      if(temp){
+        this.name=temp;
+      }
+    });
     this.database.getEducations().subscribe(temp=>{
       this.educations = temp;
     });

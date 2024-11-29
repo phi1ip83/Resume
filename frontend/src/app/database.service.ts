@@ -5,6 +5,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Education } from './dataTypes/Education';
 import { Skill } from './dataTypes/Skill';
 import { throwError } from 'rxjs';
+import { LoginService } from './login.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +13,7 @@ import { throwError } from 'rxjs';
 export class DatabaseService {
   private url = '/api'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private login:LoginService) { }
 
   //experience
   getExperiences():Observable<Experience[]>{
@@ -20,7 +21,7 @@ export class DatabaseService {
   }
   createExperience(experience:Experience):Observable<any>{
     const currentUrl = this.url +'/experience';
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const headers = this.login.getHeaders();
     
     return this.http.post<any>(currentUrl, experience, {headers})
    
@@ -32,7 +33,7 @@ export class DatabaseService {
   }
   updateExperience(id:number, experience:Experience){
     const currentUrl = `${this.url}/experience/${id}`
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const headers = this.login.getHeaders();
     return this.http.put<any>(currentUrl, experience, {headers});
 
   }
@@ -48,7 +49,7 @@ export class DatabaseService {
   }
   createEducation(education:Education):Observable<any>{
     const currentUrl = this.url +'/education';
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const headers = this.login.getHeaders();
     
     return this.http.post<any>(currentUrl, education, {headers})
    
@@ -59,7 +60,7 @@ export class DatabaseService {
   }
   updateEducation(id:number, education:Education){
     const currentUrl = `${this.url}/education/${id}`
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const headers = this.login.getHeaders();
     return this.http.put<any>(currentUrl, education, {headers});
 
   }
@@ -74,7 +75,7 @@ export class DatabaseService {
   }
   createSkill(skill:Skill):Observable<any>{
     const currentUrl = this.url +'/skill';
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const headers = this.login.getHeaders();
     
     return this.http.post<any>(currentUrl, skill, {headers})
    
@@ -85,7 +86,7 @@ export class DatabaseService {
   }
   updateSkill(id:number, skill:Skill){
     const currentUrl = `${this.url}/skill/${id}`
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const headers = this.login.getHeaders();
     return this.http.put<any>(currentUrl, skill, {headers});
 
   }

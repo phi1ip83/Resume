@@ -19,12 +19,11 @@ export class NavbarComponent {
   ngOnInit(){
     this.observable = this.login.getName();
     this.observable.subscribe(temp=>{
-      this.name=temp;
+      this.name=temp;      
     })
   }
   logout(){
     this.login.logout();
-    window.location.reload();
     
   }
 }
