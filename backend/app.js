@@ -1,20 +1,27 @@
 
 const express = require('express');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken')
 
 const sequelize = require('./database');
 //database templates
 const Experience=require("./templates/Experience");
 const Skill = require("./templates/Skill");
 const Education = require("./templates/Education")
+const Account =require("./templates/Account")
 //initialize database and wipe any previous information out
 //remove force:true to keep information on reset
 sequelize.sync({force:true}).then(()=>console.log("db ready"));
-
+//sequelize.sync().then(()=>console.log("db ready"));
 
 const app = express();
 const port = 3000;
+//authentication middleware
+const verifyToken = require('./auth')
 
+//lets you read json objects from requests
 app.use(express.json());
+
 //test request to make sure the website is running
 app.get('/', (req, res) => {
   res.send('Hello World! This will eventually serve the angular site once it is published for the public.');
@@ -22,6 +29,49 @@ app.get('/', (req, res) => {
 //will eventually be an html page with the database functions listed
 app.get('/api', (req, res) => {
   res.send('database under construction...');
+});
+
+//------------------security-------------------------------
+//register
+app.post("/register", async (req, res)=>{
+  try{
+    const { name, password } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = await Account.create({name:name, password:hashedPassword});
+
+    res.send({ message: 'User registered successfully', status:201});
+
+  }catch(error){
+    res.send({message:"Registration failed.", status:500, error:error});
+  }
+
+});
+app.post("/login", async (req, res)=>{
+  try {
+    const { name, password } = req.body;
+    const user = await Account.findByPk(name)
+
+    if (!user) {
+      return res.send({message:"login failed, no user exists.", status:401});
+    }
+
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    if (!passwordMatch) {
+      return res.send({message:"login failed, wrong password.", status:401});
+    }
+
+    const token = jwt.sign({ name: user.dataValues.name }, 'your-secret-key', {
+    expiresIn: '1h',
+    });
+
+    res.send({token:token, status:201})
+  } catch (error) {
+    res.send({message:"login failed.", status:500, error:error});
+  }
+
+});
+app.get("/auth", verifyToken, (req,res)=>{
+  res.send({status:201, message:`${req.name} has accesed a secure route.`});
 });
 
 //----------------- database ------------------------------
