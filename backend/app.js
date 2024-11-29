@@ -11,8 +11,8 @@ const Education = require("./templates/Education")
 const Account =require("./templates/Account")
 //initialize database and wipe any previous information out
 //remove force:true to keep information on reset
-sequelize.sync({force:true}).then(()=>console.log("db ready"));
-//sequelize.sync().then(()=>console.log("db ready"));
+//sequelize.sync({force:true}).then(()=>console.log("db ready"));
+sequelize.sync().then(()=>console.log("db ready"));
 
 const app = express();
 const port = 3000;
