@@ -65,7 +65,8 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "resume:build:production"
+              "buildTarget": "resume:build:production",
+              "proxyConfig": "src/proxy_prod.conf.json"
             },
             "development": {
               "buildTarget": "resume:build:development"

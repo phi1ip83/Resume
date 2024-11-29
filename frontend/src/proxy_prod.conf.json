@@ -1,0 +1,6 @@
+{
+    "/api": {
+    "target": "http://philip-resume.duckdns.org:3000/",
+    "secure": false
+    }
+}
