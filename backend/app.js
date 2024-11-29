@@ -79,7 +79,7 @@ app.get("/api/auth", verifyToken, (req,res)=>{
 //----------------- database ------------------------------
 //experience
 //create a new job experience based on the body recieved from the call
-app.post('/api/experience', (req,res)=>{
+app.post('/api/experience', verifyToken, (req,res)=>{
     Experience.create(req.body).then(res.send({message: "Successfully Registered", status: 201})).catch(err=>{
       console.log(err);
       res.send({message:"database refused.", status: 400})
@@ -100,7 +100,7 @@ app.get('/api/experience/:id', async (req, res)=>{
   res.send(experience);
 });
 //update experience by id
-app.put('/api/experience/:id', async (req,res)=>{
+app.put('/api/experience/:id', verifyToken, async (req,res)=>{
   const requestedId = req.params.id;
   Experience.update(req.body, {where:{id:requestedId}}).then(temp => res.send(temp)).catch(err=>{
     console.log(err);
@@ -109,7 +109,7 @@ app.put('/api/experience/:id', async (req,res)=>{
 
 });
 //delete by id
-app.delete('/api/experience/:id', async (req,res)=>{
+app.delete('/api/experience/:id', verifyToken, async (req,res)=>{
   const requestedId = req.params.id;
   Experience.destroy({where:{id:requestedId}}).then(res.send({message:"deleted.", status:201})).catch(err=>{
     console.log(err);
@@ -118,7 +118,7 @@ app.delete('/api/experience/:id', async (req,res)=>{
 });
 //skill
 //create a new skill based on the body recieved from the call
-app.post('/api/skill', (req,res)=>{
+app.post('/api/skill', verifyToken, (req,res)=>{
   Skill.create(req.body).then(res.send({message: "Successfully Registered", status: 201})).catch(err=>{
     console.log(err);
     res.send({message:"database refused.", status: 400})
@@ -127,26 +127,26 @@ app.post('/api/skill', (req,res)=>{
 });
 //get all skills from the database
 app.get('/api/skills', async (req, res)=>{
-const skills = await Skill.findAll();
-res.send(skills)
+  const skills = await Skill.findAll();
+  res.send(skills)
 
 });
 //get a skill by the specific ID
 app.get('/api/skill/:id', async (req, res)=>{
-const requestedId=req.params.id;
-const skill = await Skill.findOne({where:{id:requestedId}});
+  const requestedId=req.params.id;
+  const skill = await Skill.findOne({where:{id:requestedId}});
 
-res.send(skill);
+  res.send(skill);
 });
 //update skill by id
-app.put('/api/skill/:id', async (req,res)=>{
-const requestedId = req.params.id;
-Skill.update(req.body, {where:{id:requestedId}}).then(temp => res.send(temp)).catch(err=>{
-  console.log(err);
-  res.send({message:"database refused.", status: 400})
+app.put('/api/skill/:id', verifyToken, async (req,res)=>{
+  const requestedId = req.params.id;
+  Skill.update(req.body, {where:{id:requestedId}}).then(temp => res.send(temp)).catch(err=>{
+    console.log(err);
+    res.send({message:"database refused.", status: 400});
 });
 //delete by id
-app.delete('/api/skill/:id', async (req,res)=>{
+app.delete('/api/skill/:id', verifyToken, async (req,res)=>{
   const requestedId = req.params.id;
   Skill.destroy({where:{id:requestedId}}).then(res.send({message:"deleted.", status:201})).catch(err=>{
     console.log(err);
@@ -158,7 +158,7 @@ app.delete('/api/skill/:id', async (req,res)=>{
 });
 //education
 //create a new education based on the body recieved from the call
-app.post('/api/education', (req,res)=>{
+app.post('/api/education', verifyToken, (req,res)=>{
   Education.create(req.body).then(res.send({message: "Successfully Registered", status: 201})).catch(err=>{
     console.log(err);
     res.send({message:"database refused.", status: 400})
@@ -167,24 +167,24 @@ app.post('/api/education', (req,res)=>{
 });
 //get all education from the database
 app.get('/api/educations', async (req, res)=>{
-const educations = await Education.findAll();
-res.send(educations)
+  const educations = await Education.findAll();
+  res.send(educations);
 
 });
 //get an education by the specific ID
 app.get('/api/education/:id', async (req, res)=>{
-const requestedId=req.params.id;
-const education = await Education.findOne({where:{id:requestedId}});
+  const requestedId=req.params.id;
+  const education = await Education.findOne({where:{id:requestedId}});
 
-res.send(education);
+  res.send(education);
 });
 
 //update education by id
-app.put('/api/education/:id', async (req,res)=>{
+app.put('/api/education/:id', verifyToken, async (req,res)=>{
 const requestedId = req.params.id;
-Education.update(req.body, {where:{id:requestedId}}).then(temp => res.send(temp)).catch(err=>{
-  console.log(err);
-  res.send({message:"database refused.", status: 400})
+  Education.update(req.body, {where:{id:requestedId}}).then(temp => res.send(temp)).catch(err=>{
+    console.log(err);
+    res.send({message:"database refused.", status: 400})
 });
 //delete by id
 app.delete('/api/education/:id', async (req,res)=>{
