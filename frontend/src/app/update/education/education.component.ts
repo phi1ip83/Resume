@@ -24,6 +24,7 @@ export class EducationComponent {
     const temp = this.active.snapshot.paramMap.get('id');
     
     if(!temp){
+      this.router.navigate(['/home']);
       return;
     }
     this.id = parseInt(temp);
