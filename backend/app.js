@@ -160,6 +160,7 @@ app.put('/api/skill/:id', verifyToken, async (req,res)=>{
   Skill.update(req.body, {where:{id:requestedId}}).then(temp => res.send(temp)).catch(err=>{
     console.log(err);
     res.send({message:"database refused.", status: 400});
+  });
 });
 //delete by id
 app.delete('/api/skill/:id', verifyToken, async (req,res)=>{
@@ -170,8 +171,6 @@ app.delete('/api/skill/:id', verifyToken, async (req,res)=>{
   });
 });
 
-
-});
 //education
 //create a new education based on the body recieved from the call
 app.post('/api/education', verifyToken, (req,res)=>{
@@ -201,21 +200,16 @@ const requestedId = req.params.id;
   Education.update(req.body, {where:{id:requestedId}}).then(temp => res.send(temp)).catch(err=>{
     console.log(err);
     res.send({message:"database refused.", status: 400})
+  });
 });
 //delete by id
-app.delete('/api/education/:id', async (req,res)=>{
+app.delete('/api/education/:id', verifyToken, async (req,res)=>{
   const requestedId = req.params.id;
   Education.destroy({where:{id:requestedId}}).then(res.send({message:"deleted.", status:201})).catch(err=>{
     console.log(err);
     res.send({message:"database refused.", status: 400})
   });
 });
-
-
-
-});
-//start server
-
 
 // serve angular paths
 app.all('*', function (req, res) {
