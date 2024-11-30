@@ -40,7 +40,8 @@ export class DatabaseService {
   }
   deleteExperience(id:number):Observable<any>{
     const currentUrl = `${this.url}/experience/${id}`
-    return this.http.delete<any>(currentUrl);
+    const headers = this.login.getHeaders();
+    return this.http.delete<any>(currentUrl, {headers});
   }
 
 
@@ -67,7 +68,8 @@ export class DatabaseService {
   }
   deleteEducation(id:number):Observable<any>{
     const currentUrl = `${this.url}/education/${id}`
-    return this.http.delete<any>(currentUrl);
+    const headers = this.login.getHeaders();
+    return this.http.delete<any>(currentUrl, {headers});
   }
 
   //skill
@@ -93,7 +95,8 @@ export class DatabaseService {
   }
   deleteSkill(id:number):Observable<any>{
     const currentUrl = `${this.url}/skill/${id}`
-    return this.http.delete<any>(currentUrl);
+    const headers = this.login.getHeaders();
+    return this.http.delete<any>(currentUrl, {headers});
   }
 
 

@@ -3,6 +3,8 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 const cors = require('cors');
+const compression = require('compression');
+
 
 //initiate database
 const sequelize = require('./database');
@@ -24,13 +26,22 @@ const verifyToken = require('./auth')
 //lets you read json objects from requests
 app.use(express.json());
 
+
 //cors enabling, lets cross orign request for the api
 app.use(cors());
 
-//test request to make sure the website is running
-app.get('/', (req, res) => {
-  res.send('Hello World! This will eventually serve the angular site once it is published for the public.');
-});
+const app_folder = "./resume/browser";
+const options = {
+  dotfiles: 'ignore',
+  etag: false,
+  extensions: ['html', 'js', 'scss', 'css'],
+  index: false,
+  maxAge: '1y',
+  redirect: true,
+}
+app.use(compression());
+app.use(express.static(app_folder, options));
+
 //will eventually be an html page with the database functions listed
 app.get('/api', (req, res) => {
   res.send('database under construction...');
@@ -204,6 +215,12 @@ app.delete('/api/education/:id', async (req,res)=>{
 
 });
 //start server
+
+
+// serve angular paths
+app.all('*', function (req, res) {
+  res.status(200).sendFile(`/`, {root: app_folder});
+});
 app.listen(port, () => {  
   console.log(`Example app listening on port ${port}, http://localhost:${port}/`);
 }); 
