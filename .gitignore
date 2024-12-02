@@ -4,6 +4,7 @@
 /backend/integration/bazel/bazel-*
 *.log
 /backend/node_modules/
+*.sqlite
 
 # npm
 node_modules
