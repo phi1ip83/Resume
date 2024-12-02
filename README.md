@@ -3,37 +3,12 @@ This is the code for my personal resume website. It is an example of what can be
 
 It is also a demonstration of how I handle website development over time.  Github will be used so that previous versions of my entire project can be seen as needed. Anyone will be able to go through the commit history and see everything develop step by step if they wish.
 
-## Minimum Viable Product
-For this project to meet the criteria of a minimum viable product the following must be true:
-### The website must be fully reactive. 
-The user experience of the website must be pleasent both on mobile and on computers. People hiring and looking for candidates will likely be doing so from personal computer. Meanwhile most people have a mobile phone in thier possesion and the vast majority of modern phones are capable of accessing the web from anywhere. 
+## Current features
+The website can now be found hosted at http://philip-resume.duckdns.org:3000. 
+The current Feature list can be found in the [Features](Features.md) file.
 
-This means that a modern website must support all screen sizes from small phone screens to ultra wide monitors.
-
-### Content
-The website is suppose to be an online version of my resume and will need to have all its contents within it.
-
-This will include sections for any relevant work experience, education, personal contact information, skills and so on. 
-
-Since this is a website this will be taken a little farther as well. The user will be able to select a job or position and the resume will be updated to match. Experiences, skills and so on will be added, changed and removed as needed to match the desired job or role. 
-
-Finally this content must be displayed in positive way. A plain text resume as a website will not be very attractive. Styling will be applied as nessecary and in a way that will change based on screen size and device type. No matter the device or screen size or screen resolution, the content must be easy to navigate, easy to understand and a positive experience for the user.
-
-### Ways to easily edit and change the website as needed. 
-This will be one of the main draws of this project and what will demonstrate the needs for a backend to go with a front end. A simple website made with just angular could do everything already listed. However to make it possible to edit the contents of a website without the aid of a developer, a backend of some sort is nessesary weather your using amazon web services or a dedicated backend like this project.
-
-If a user is an administrator they need to be able to log in, they need to be able to view the contents of the website and edit them as desired. They will need to be able to add contents to the website in case of more experiences or skills, they might need to remove or edit outdated expereinces as things change and so on.
-
-This will require a backend to handle the logic and connect with a database to store the information that can be edited. The backend must also pull the informatiuon from a database when required by soemone trying to access the site. The backend will also need to handle logins in a secure way. The majority of the complexity of the website will be here. 
-
-All admin pages will also need to be fully reactive in case they need to access the website while away from a PC. 
-
-## Additional Goals
-These are the goals once the basics are met. The higher in the list the higher the priority.
-
-- Fully self host the website from a personal server with a purchased domain so it can be easily accessed anywhere. 
-- The ability to save or print a fully formatted word document based on what the user selects. This will include option like number of pages that are accaptable, desired font size, line spacing and so on.
-- Additional pages to display any other products or websites I make in the future. Eventually the goal is to turn my resume website into a personal portfolio that can be accessed anywhere.
+## Planned Features
+Planned features can be found in [this](Planned Features.md) document.
 
 ## Hosting
 A [deploy](Deploy.md) document has been created to help people setup and run the website locally for development.
