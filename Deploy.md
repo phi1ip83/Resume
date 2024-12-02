@@ -1,4 +1,4 @@
-# Deploying Development Environment, Updating local version and pull requests
+# Deploying Development Environment
 ## Deploying the website and backend locally for development
 - assumes you have git, npm, node.js, angular 18 all installed globally on your computer
 - assumes you have a code editor like visual studio code
@@ -16,7 +16,7 @@ step 4: in the CLI navigate into Resume/backend and use the following command to
 > npm install
 
 step 5: to run the backend locally you can run the following command from Resume/backend in your CLI. Make sure not to close the window or the server stops.
-> node app.js
+> nodemon app.js
 
 step 6: to run the frontend locally use following from Resume/frontend through your CLI. Make sure not to close the window or your website will stop being served.
 > ng serve
