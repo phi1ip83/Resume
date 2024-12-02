@@ -6,11 +6,11 @@ import { DatabaseService } from '../database.service';
 import { Experience } from '../dataTypes/Experience';
 import { Skill } from '../dataTypes/Skill';
 import { Education } from '../dataTypes/Education';
-import { FormControl, FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../login.service';
 import { RouterLink } from '@angular/router';
+import { DocumentGeneratorService } from '../document-generator.service';
 
 @Component({
   selector: 'app-home',
@@ -31,7 +31,7 @@ export class HomeComponent {
   experiences:Experience[]=[];
   visableExperiences:Experience[]=[]
 
-  constructor(private database:DatabaseService, private login:LoginService){}
+  constructor(private database:DatabaseService, private login:LoginService, private docs:DocumentGeneratorService){}
 
   ngOnInit(){
     this.login.getName().subscribe(temp=>{
@@ -64,6 +64,11 @@ export class HomeComponent {
         this.visableSkills.push(item);
       }
     });
+  }
+  createDocx(){
+    console.log("creating docx...");
+    this.docs.create(this.visableExperiences, this.visableSkills, this.educations);
+    
   }
 }
 

@@ -1,5 +1,5 @@
 <div class="container text-center">
-    <label for="type">Job Type: &nbsp;&nbsp;</label>
+    <label hidden for="type">Job Type: &nbsp;&nbsp;</label>
     <select hidden id="type" aria-label="job type" [(ngModel)]="type">
         <option value="web_dev">Web Developer</option>
     </select>
@@ -14,4 +14,6 @@
 
     <h2>Education</h2><a class="btn btn-primary" routerLink="/education/-1" *ngIf="name">Add New</a>
     <app-education *ngFor="let education of educations" [item]="education" [user]="name"></app-education>
+
+    <button class="btn btn-primary" (click)="createDocx()">Create Word Docx</button>
 </div>
