@@ -8,7 +8,7 @@ The website can now be found hosted at http://philip-resume.duckdns.org:3000.
 The current Feature list can be found in the [Features](Features.md) file.
 
 ## Planned Features
-Planned features can be found in [this](Planned Features.md) document.
+Planned features can be found in [this]("Planned Features.md") document.
 
 ## Hosting
 A [deploy](Deploy.md) document has been created to help people setup and run the website locally for development.
